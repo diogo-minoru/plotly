@@ -7,15 +7,19 @@ class Die:
     def roll(self):
         return randint(1, self.num_sides)
     
-die = Die()
+die1 = Die()
+die2 = Die()
 
 results = []
 for roll_num in range(1000):
-    result = die.roll()
+    result = die1.roll() + die2.roll()
     results.append(result)
 
 frequencies = []
-poss_results = range(1, die.num_sides + 1)
+
+max_result = die1.num_sides + die2.num_sides
+
+poss_results = range(2, max_result + 1)
 for value in poss_results:
     frequency = results.count(value)
     frequencies.append(frequency)
@@ -25,7 +29,7 @@ print(frequencies)
 
 import plotly.express as px
 
-title = "Resultados de 1000 dados"
+title = "Resultados de dois dados sendo jogados 1000 vezes"
 labels = {"x": "Result", "y": "Frequency of Result"}
 
 fig = px.bar(x = poss_results, y = frequencies, title = title, labels = labels)
