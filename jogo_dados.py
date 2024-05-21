@@ -33,4 +33,8 @@ title = "Resultados de dois dados sendo jogados 1000 vezes"
 labels = {"x": "Result", "y": "Frequency of Result"}
 
 fig = px.bar(x = poss_results, y = frequencies, title = title, labels = labels)
+
+# Fazer com que cada coluna tenha sua própria legenda no valor do eixo x
+fig.update_layout(xaxis_dtick = 1)
+
 fig.show()
